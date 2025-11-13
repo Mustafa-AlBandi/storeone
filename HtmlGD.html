@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Downloading Files</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .status {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .progress-container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #f3f3f3;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 30px;
+            width: 0%;
+            background-color: #1a73e8;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Downloading Files</h1>
+    <div class="status" id="status">Starting download...</div>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar">0%</div>
+    </div>
+
+    <script>
+        // List of Google Drive file IDs
+        const files = [
+            {id: "1MEEJVDWKCqGiKcxz77h0pPBDfuwbISIk", name: "File 1"},
+            //  {id: "FILE_ID_2", name: "File 2"},
+             // {id: "FILE_ID_3", name: "File 3"}
+        ];
+
+        const progressBar = document.getElementById("progressBar");
+        const status = document.getElementById("status");
+
+        let currentFile = 0;
+
+        function downloadNextFile() {
+            if (currentFile >= files.length) {
+                status.textContent = "All files downloaded! Check your Downloads folder.";
+                progressBar.style.width = "100%";
+                progressBar.textContent = "100%";
+                return;
+            }
+
+            const file = files[currentFile];
+            status.textContent = `Downloading ${file.name}...`;
+
+            // Create hidden link to trigger download
+            const link = document.createElement("a");
+            link.href = `https://drive.google.com/uc?export=download&id=${file.id}`;
+            link.download = ""; // browser will use default name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Simulate progress for this file
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 10; // increase 10% per 200ms (adjust speed as needed)
+                if (progress > 100) progress = 100;
+                const overallProgress = Math.round(((currentFile + progress / 100) / files.length) * 100);
+                progressBar.style.width = `${overallProgress}%`;
+                progressBar.textContent = `${overallProgress}%`;
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    currentFile++;
+                    setTimeout(downloadNextFile, 500); // start next file after short delay
+                }
+            }, 200);
+        }
+
+        // Start the download process
+        downloadNextFile();
+    </script>
+</body>
+</html>
