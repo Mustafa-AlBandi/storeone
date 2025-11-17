@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مثال نص عربي</title>
+
+  <!-- Optional: load a good Arabic web font (example) -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: "Noto Sans Arabic", "Arial", sans-serif;
+      direction: rtl;               /* default text flow: right-to-left */
+      unicode-bidi: embed;         /* keep embedding of bidi text stable */
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    /* Example: keep numbers / english words LTR inside Arabic text */
+    .ltr { direction: ltr; display: inline-block; unicode-bidi: embed; }
+
+    label { display: block; margin-bottom: .5rem; }
+    input[type="text"] { width: 100%; padding: .5rem; box-sizing: border-box; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>مرحبا بك</h1>
+
+    <p>هذا مثال على نص عربي في صفحة HTML. يمكنك كتابة الفقرات، العناوين، والروابط بنفس الطريقة.</p>
+
+    <p>
+      مثال مختلط: سعر المنتج هو <span class="ltr">USD 25</span> ووقت التسليم المتوقع <span class="ltr">2025-11-01</span>.
+    </p>
+
+    <form>
+      <label for="name">الاسم الكامل</label>
+      <input id="name" name="name" type="text" placeholder="أدخل اسمك" />
+
+      <label for="phone">رقم الهاتف</label>
+      <input id="phone" name="phone" type="text" placeholder="مثال: 05XXXXXXXX" />
+    </form>
+  </main>
+</body>
+</html>
