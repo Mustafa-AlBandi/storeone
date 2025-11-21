@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Sheet Form</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #1a73e8;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    iframe {
+      width: 100%;
+      height: calc(100% - 60px); /* full screen minus header */
+      border: none;
+    }
+
+    footer {
+      background-color: #eee;
+      color: #333;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>📄 My Custom Google Sheet Form</header>
+
+<!-- Embed your Web App URL here -->
+<iframe src="https://script.google.com/macros/s/AKfycbxg0q6L4YSKd_XIyFZxcp5P383ZUONISgJNxmaCw-fNGKHPpaNAvtyOc7Ps5SckPH8uVQ/exec"></iframe>
+
+<footer>© 2025 Your Name or Company</footer>
+
+</body>
+</html>
